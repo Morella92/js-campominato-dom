@@ -71,13 +71,21 @@ startButton.addEventListener('click', function () {
 
                 alert("HAI VINTO! Il tuo punteggio finale è: " + score);
 
+                // disabilito tutti gli eventi click sulle celle
+                //NON FUNZIONA!!!!
+                cellElements[i].removeEventListener('click', event.currentTarget);
+
             }else if (bombs.includes(i + 1)) {
 
                 event.target.style.backgroundColor = "red";
                 alert("GAME OVER! Hai trovato una bomba, riprova!");
 
+                // disabilito tutti gli eventi click sulle celle
+                //NON FUNZIONA!!!!
+                cellElements[i].removeEventListener('click', event.currentTarget);
+
             } else {
-                
+
                 event.target.style.backgroundColor = "purple";
                 score++;
             }
@@ -87,8 +95,3 @@ startButton.addEventListener('click', function () {
     //reset score
     score = 0
 })
-
-
-function onClick() {
-    console.log(i + 1)
-}
