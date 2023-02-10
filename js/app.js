@@ -31,7 +31,7 @@ startButton.addEventListener('click', function () {
         let randomNumber = Math.floor(Math.random() * cellNumber) + 1;
         console.log(randomNumber)
 
-        if(!bombs.includes(randomNumber)){
+        if (!bombs.includes(randomNumber)) {
             bombs.push(randomNumber)
         }
     }
@@ -58,33 +58,30 @@ startButton.addEventListener('click', function () {
         const singleCell = cellElements[i]
 
         singleCell.addEventListener('click', function (event) {
-        console.log(event)
+            console.log(event)
 
-        let userClick = event.target
-        console.log(userClick)
+            let userClick = event.target
+            console.log(userClick)
 
-        //Quando l’utente clicca su una cella: 
-
-            //se il numero della cella è presente nella lista dei numeri generati - 
-            //abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina
-
-        if(bombs.includes(i + 1)){
-
-            userClick.style.backgroundColor = 'red';
-            alert('GAME OVER! Hai trovato una bomba, riprova!');
+            //Quando l’utente clicca su una cella: 
 
             //Altrimenti la cella cliccata si colora di viola e l’utente può continuare a cliccare sulle altre celle.
-        }else if (score === cellNumber - 16){
 
-            userClick.style.backgroundColor = 'purple';
-            score++;
+            if(score === cellNumber - 16){
 
-        }else{
+                alert("HAI VINTO! Il tuo punteggio finale è: " + score);
 
-            alert('COMPLIMENTI! HAI VINTO!' + score);
-        }
-           
-        })
+            }else if (bombs.includes(i + 1)) {
+
+                event.target.style.backgroundColor = "red";
+                alert("GAME OVER! Hai trovato una bomba, riprova!");
+
+            } else {
+                
+                event.target.style.backgroundColor = "purple";
+                score++;
+            }
+            })
     }
 
     //reset score
