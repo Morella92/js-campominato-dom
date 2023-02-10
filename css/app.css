@@ -1,0 +1,47 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+#grid {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#grid > * {
+	aspect-ratio: 1;
+	border: 2px solid orchid;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+}
+
+.start-button{
+    color: white;
+    background-color: orchid;
+    border-color: orchid;
+    border-radius: 999px;
+    padding: 10px 20px;
+   
+}
+
+.game-start{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-title{
+    color: orchid;
+    font-size: 25px;
+}
