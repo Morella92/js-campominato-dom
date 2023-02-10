@@ -16,6 +16,8 @@ console.log(bombs);
 let score = 0;
 console.log(score)
 
+// creo evento legato al pulsante play
+
 const startButton = document.querySelector('.start-button')
 console.log(startButton)
 
@@ -48,22 +50,45 @@ startButton.addEventListener('click', function () {
         gridElement.appendChild(cell);
     }
 
+    //aggiungo l'evento click alle celle
+
     const cellElements = document.querySelectorAll('.cell')
-    // console.log(celleElements)
 
     for (let i = 0; i < cellElements.length; i++) {
         const singleCell = cellElements[i]
 
-        singleCell.addEventListener('click', function () {
-            console.log(i + 1)
+        singleCell.addEventListener('click', function (event) {
+        console.log(event)
 
-            if (singleCell.style.backgroundColor === "purple") {
-                singleCell.style.backgroundColor = "";
-            } else {
-                singleCell.style.backgroundColor = "purple";
-            }
+        let userClick = event.target
+        console.log(userClick)
+
+        //Quando l’utente clicca su una cella: 
+
+            //se il numero della cella è presente nella lista dei numeri generati - 
+            //abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina
+
+        if(bombs.includes(i + 1)){
+
+            userClick.style.backgroundColor = 'red';
+            alert('GAME OVER! Hai trovato una bomba, riprova!');
+
+            //Altrimenti la cella cliccata si colora di viola e l’utente può continuare a cliccare sulle altre celle.
+        }else if (score === cellNumber - 16){
+
+            userClick.style.backgroundColor = 'purple';
+            score++;
+
+        }else{
+
+            alert('COMPLIMENTI! HAI VINTO!' + score);
+        }
+           
         })
     }
+
+    //reset score
+    score = 0
 })
 
 
